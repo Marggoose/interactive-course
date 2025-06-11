@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный курс по мобильной робототехнике</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Регистрация</h1>
+</header>
+<body>
+<h2>Регистрация</h2>
+<form id="registerForm">
+    <label>Логин: <input type="text" id="username" required></label><br>
+    <label>Пароль: <input type="password" id="password" required></label><br>
+    <label>Роль:
+        <select id="role">
+            <option value="student">Ученик</option>
+            <option value="teacher">Учитель</option>
+        </select>
+    </label><br>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+<p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const role = document.getElementById('role').value;
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        if (users.some(user => user.username === username)) {
+            alert("Пользователь уже существует.");
+            return;
+        }
+
+        users.push({ username, password, role });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert("Регистрация прошла успешно!");
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+</html>

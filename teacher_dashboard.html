@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный курс по мобильной робототехнике</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Кабинет учителя</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li id="cabinetLink" style="display: none;"></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<p>Добро пожаловать, учитель!</p>
+<button onclick="logout()">Выйти</button>
+<script>
+    function logout() {
+        localStorage.removeItem('user');
+        window.location.href = 'index.html';
+    }
+</script>
+</body>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>

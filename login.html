@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный курс по мобильной робототехнике</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Вход в систему</h1>
+    </div>
+</header>
+<body>
+<h2>Вход в систему</h2>
+<form id="loginForm">
+    <label>Логин: <input type="text" id="username" required></label><br>
+    <label>Пароль: <input type="password" id="password" required></label><br>
+    <button type="submit">Войти</button>
+</form>
+<p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user));
+            if (user.role === 'teacher') {
+                window.location.href = 'teacher_dashboard.html';
+            } else {
+                window.location.href = 'student_dashboard.html';
+            }
+        } else {
+            alert("Неверный логин или пароль.");
+        }
+    });
+</script>
+</body>
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+</html>

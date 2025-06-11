@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный курс по мобильной робототехнике</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .achievement {
+            width: 30%;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .achievement img {
+            width: 100px; /* Ширина иконки */
+            height: auto;
+            filter: grayscale(100%); /* Черно-белая иконка */
+            transition: filter 0.3s; /* Плавный переход */
+        }
+        .achievement.completed img {
+            filter: none; /* Цветная иконка */
+        }
+        .achievement h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Достижения</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <h1>Ваши достижения</h1>
+    <div class="achievements-container" id="achievementsContainer">
+        <div class="achievement">
+            <img src="assets\img\free-icon-step-1-5405905.png" alt="Первый шаги">
+            <h2>Первый шаги</h2>
+            <p>Пройти ознакомительный урок на 100%</p>
+        </div>
+        <div class="achievemen2t">
+            <img src="assets\img\free-icon-movement-461349.png" alt="Физика = просто">
+            <h2>Физика = просто</h2>
+            <p>Пройти урок 1.2 на 100%</p>
+        </div>
+        <div class="achievement">
+            <img src="assets\img\free-icon-robot-1292799.png" alt="Кто зачем?">
+            <h2>Кто зачем?</h2>
+            <p>Пройти урок 1.3 на 100%</p>
+        </div>
+        <div class="achievement">
+            <img src="assets\img\free-icon-start-up-8905671.png" alt="Мастер азов">
+            <h2>Мастер азов</h2>
+            <p>Пройти итоговый тест на 100%</p>
+        </div>
+        <div class="achievement">
+            <img src="assets\img\free-icon-start-up-8905671.png" alt="Что такое программа?">
+            <h2>Мастер азов</h2>
+            <p>Пройти урок 2.1 на 100%</p>
+        </div>
+    </div>
+</main>
+<script>
+document.addEventListener
+('DOMContentLoaded', function () 
+    {
+// Проверяем состояние достижения
+    const lesson1Completed = localStorage.getItem('lesson1Completed');
+    if (lesson1Completed === 'true') {
+      const achievement = document.querySelector('.achievement:nth-child(1)'); // Первое достижение
+    achievement.classList.add('completed');}
+
+    const lesson2Completed = localStorage.getItem('lesson2Completed');
+    if (lesson2Completed === 'true') {
+      const achievement2 = document.querySelector('.achievement:nth-child(1)'); // Первое достижение
+    achievement.classList.add('completed');
+
+    }
+    }
+);
+</script>
+</body>
+</html>

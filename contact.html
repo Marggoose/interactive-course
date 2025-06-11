@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный курс по мобильной робототехнике</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Интерактивный курс по мобильной робототехнике</h1>
+        <nav>
+        <nav>
+            <ul>
+            <ul>
+                <li id="loginLink"><a href="login.html">Вход</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li id="cabinetLink" style="display: none;"></li>
+            </ul>
+            </ul>
+        </nav>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+    <h2>Свяжитесь с нами</h2>
+    <p>Если у вас есть вопросы, предложения или вы хотите записаться на курс, пожалуйста, заполните форму ниже или свяжитесь с нами по контактам:</p>
+
+    <ul>
+        <li><strong>Email:</strong> robotics.course@example.com</li>
+        <li><strong>Телефон:</strong> +7 (900) 123-45-67</li>
+        <li><strong>Адрес:</strong> МБОУ ООШ №26, г. Примерск, ул. Школьная, д. 1</li>
+    </ul>
+    </section>
+
+    <section>
+    <h3>Форма обратной связи</h3>
+    <form action="#" method="post">
+        <label for="name">Ваше имя:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Сообщение:</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+    <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+<script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userCabinet = document.getElementById('userCabinet');
+    const cabinetLink = document.getElementById('cabinetLink');
+    const loginLink = document.getElementById('loginLink');
+
+    if (user) {
+        let dashboardURL = '';
+        let roleText = '';
+
+        if (user.role === 'teacher') {
+            dashboardURL = 'teacher_dashboard.html';
+            roleText = 'Кабинет учителя';
+            userCabinet.innerHTML = `<p>Вы вошли как учитель. <a href="${dashboardURL}">Перейти в кабинет учителя</a></p>`;
+        } else if (user.role === 'student') {
+            dashboardURL = 'student_dashboard.html';
+            roleText = 'Кабинет ученика';
+            userCabinet.innerHTML = `<p>Вы вошли как ученик. <a href="${dashboardURL}">Перейти в кабинет ученика</a></p>`;
+        }
+
+        cabinetLink.innerHTML = `<a href="${dashboardURL}">${roleText}</a>`;
+        cabinetLink.style.display = 'inline-block';
+        loginLink.style.display = 'none'; // скрыть "Вход"
+    } else {
+        userCabinet.innerHTML = `<p>Вы не вошли в систему. <a href="login.html">Войти</a></p>`;
+    }
+</script>
+</body>
+</html>

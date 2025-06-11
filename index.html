@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный курс по мобильной робототехнике</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Интерактивный курс по мобильной робототехнике</h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<body>
+     <div class="container">
+        <h1>Интерактивный курс по мобильной робототехнике</h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+<main>
+    <section class="gradient-banner">
+        <h4>Добро пожаловать!</h4>
+        <p>Этот курс поможет вам познакомиться с основами мобильной робототехники, научиться собирать роботов с помощью конструктора КЛИК, программировать их в mBlock и ArduinoIDE, а также создавать собственные проекты.</p>
+    </section>
+    
+<section class="moduls">
+    <h2>Разделы курса</h2>
+    <div class="module-grid">
+        <a class="module-block" href="modules/module1-intro/index.html">1. Вводное занятие</a>
+        <a class="module-block" href="modules/module2-programming/index.html">2. Программирование: mBlock, ArduinoIDE</a>
+        <a class="module-block" href="modules/module3-construction/index.html">3. Конструирование</a>
+        <a class="module-block" href="modules/module4-project/index.html">4. Проектная работа</a>
+    </div>
+</section>
+
+    <section class="moduls">
+        <h2>Личный кабинет</h2>
+        <div id="userCabinet"></div>
+    </section>
+
+    <section class="moduls">
+        <h2>Форма обратной связи</h2>
+        <p>Если у вас есть вопросы или предложения — <a href="contact.html">напишите нам</a>.</p>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+
+<script>
+    // Проверяем, есть ли данные пользователя в localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userCabinet = document.getElementById('userCabinet');
+
+    if (user) {
+        // Отображаем ссылку на личный кабинет в зависимости от роли
+        if (user.role === 'teacher') {
+            userCabinet.innerHTML = `<p>Вы вошли как учитель. <a href="teacher_dashboard.html">Перейти в кабинет учителя</a></p>`;
+        } else if (user.role === 'student') {
+            userCabinet.innerHTML = `<p>Вы вошли как ученик. <a href="student_dashboard.html">Перейти в кабинет ученика</a></p>`;
+        }
+    } else {
+        userCabinet.innerHTML = `<p>Вы не вошли в систему. <a href="login.html">Войти</a></p>`;
+    }
+</script>
+</body>
+</html>

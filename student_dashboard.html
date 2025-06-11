@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интерактивный курс по мобильной робототехнике</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+    .achievements-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    }
+
+    .achievement {
+    width: calc(33.33% - 40px);
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    }
+
+    .achievement img {
+    max-width: 100px;
+    height: auto;
+    filter: grayscale(100%);
+    }
+
+    @media (max-width: 768px) {
+    .achievement {
+        width: calc(50% - 40px);
+    }
+    }
+
+    @media (max-width: 480px) {
+    .achievement {
+        width: 100%;
+    }
+    }
+
+    .completed {
+    border-color: green;
+    background-color: #e6ffe6;
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+    <h1>Кабинет ученика</h1>
+    <nav>
+        <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О курсе</a></li>
+        <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="achievements.html">Достижения</a></li>
+        <li id="cabinetLink" style="display: none;"></li>
+        </ul>
+    </nav>
+    </div>
+</header>
+
+<p>Добро пожаловать, ученик!</p>
+<button onclick="logout()">Выйти</button>
+
+<main>
+    <h1>Ваши достижения</h1>
+    <div class="achievements-container" id="achievementsContainer">
+    <div class="achievement">
+        <img src="assets/img/free-icon-step-1-5405905.png" alt="Первые шаги">
+        <h2>Первые шаги</h2>
+        <p>Пройти ознакомительный урок на 100%</p>
+    </div>
+    <div class="achievement">
+        <img src="assets/img/free-icon-movement-461349.png" alt="Физика = просто">
+        <h2>Физика = просто</h2>
+        <p>Пройти урок 1.2 на 100%</p>
+    </div>
+    <div class="achievement">
+        <img src="assets/img/free-icon-robot-1292799.png" alt="Кто зачем?">
+        <h2>Кто зачем?</h2>
+        <p>Пройти урок 1.3 на 100%</p>
+    </div>
+    <div class="achievement">
+        <img src="assets/img/free-icon-start-up-8905671.png" alt="Мастер азов">
+        <h2>Мастер азов</h2>
+        <p>Пройти итоговый тест на 100%</p>
+    </div>
+    <div class="achievement">
+        <img src="assets/img/free-icon-start-up-8905671.png" alt="Что такое программа?">
+        <h2>Что такое программа?</h2>
+        <p>Пройти урок 2.1 на 100%</p>
+    </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const lesson1Completed = localStorage.getItem('lesson1Completed');
+    if (lesson1Completed === 'true') {
+        document.querySelector('.achievement:nth-child(1)').classList.add('completed');
+    }
+
+    const lesson2Completed = localStorage.getItem('lesson2Completed');
+    if (lesson2Completed === 'true') {
+        document.querySelector('.achievement:nth-child(2)').classList.add('completed');
+    }
+    });
+
+    function logout() {
+    localStorage.removeItem('user');
+    window.location.href = 'index.html';
+    }
+
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userCabinet = document.getElementById('userCabinet');
+    const cabinetLink = document.getElementById('cabinetLink');
+    const loginLink = document.getElementById('loginLink');
+
+    if (user) {
+        let dashboardURL = '';
+        let roleText = '';
+
+        if (user.role === 'teacher') {
+            dashboardURL = 'teacher_dashboard.html';
+            roleText = 'Кабинет учителя';
+            userCabinet.innerHTML = `<p>Вы вошли как учитель. <a href="${dashboardURL}">Перейти в кабинет учителя</a></p>`;
+        } else if (user.role === 'student') {
+            dashboardURL = 'student_dashboard.html';
+            roleText = 'Кабинет ученика';
+            userCabinet.innerHTML = `<p>Вы вошли как ученик. <a href="${dashboardURL}">Перейти в кабинет ученика</a></p>`;
+        }
+
+        cabinetLink.innerHTML = `<a href="${dashboardURL}">${roleText}</a>`;
+        cabinetLink.style.display = 'inline-block';
+        loginLink.style.display = 'none'; // скрыть "Вход"
+    } else {
+        userCabinet.innerHTML = `<p>Вы не вошли в систему. <a href="login.html">Войти</a></p>`;
+    }
+</script>
+
+<footer>
+    <div class="container">
+    <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+</body>
+</html>
