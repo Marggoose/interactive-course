@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Занятие 2.4 — Практика в ArduinoIDE</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <style>
+        .code-input {
+            width: 100%;
+            height: 150px;
+            font-family: monospace;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            resize: none;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #dc3545;
+            padding: 5px;
+            border-radius: 4px;
+            display: block;
+            margin-top: 5px;
+        }
+        .correct {
+            color: #28a745;
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            padding: 5px;
+            border-radius: 4px;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Занятие 2.4: Знакомство со средой ArduinoIDE (практика)</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+        <h2>Цель занятия</h2>
+        <p>На этом практическом занятии учащиеся закрепят навыки работы в ArduinoIDE, написав простую программу, использующую условия и циклы для управления внешними компонентами (светодиод и кнопка).</p>
+    </section>
+
+    <section>
+        <h3>Практическое задание</h3>
+        <p>Напишите программу, которая:</p>
+        <ul>
+            <li>Следит за нажатием кнопки;</li>
+            <li>Включает светодиод, если кнопка нажата;</li>
+            <li>Выключает светодиод, если кнопка отпущена.</li>
+        </ul>
+
+        <pre><code>
+// Подключение компонентов
+const int buttonPin = 2;     // Кнопка на пине 2
+const int ledPin = 13;       // Светодиод на пине 13
+
+void setup() {
+    pinMode(buttonPin, INPUT);
+    pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+    int buttonState = digitalRead(buttonPin);
+
+    if (buttonState == HIGH) {
+        digitalWrite(ledPin, HIGH); // включить светодиод
+    } else {
+        digitalWrite(ledPin, LOW);  // выключить светодиод
+    }
+}
+        </code></pre>
+    </section>
+
+    <section>
+        <h3>Сборка схемы</h3>
+        <p>Подключите кнопку между пином 2 и GND. Подключите светодиод с резистором на пин 13 и GND. Убедитесь, что всё подключено правильно, и загрузите программу в плату.</p>
+        <img src="../../assets/images/arduino-button-led.png" alt="Схема подключения кнопки и светодиода" style="max-width: 100%; border-radius: 8px; border: 1px solid #ccc; margin-top: 10px;">
+    </section>
+
+    <section>
+        <h3>Ваш код</h3>
+        <textarea id="user-code" class="code-input" placeholder="Введите ваш код здесь..."></textarea>
+        <button id="check-code">Проверить код</button>
+        <div id="result" class="result"></div>
+    </section>
+
+    <section>
+        <h3>Форма контроля</h3>
+        <p><strong>Беседа, показ, наблюдение:</strong> учащиеся объясняют структуру программы, демонстрируют результат работы на плате и могут изменить поведение схемы по заданию преподавателя.</p>
+    </section>
+
+    <nav style="margin-top: 40px;">
+        <a href="lesson3.html" style="color: #cc0000;">← Назад к занятию 2.3</a> |
+        <a href="module2-test.html" style="color: #cc0000;">Пройти тестирование →</a>
+    </nav>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('check-code').addEventListener('click', function() {
+        const userCode = document.getElementById('user-code').value.split('\n');
+        const correctCode = [
+            '// Подключение компонентов',
+            'const int buttonPin = 2;     // Кнопка на пине 2',
+            'const int ledPin = 13;       // Светодиод на пине 13',
+            '',
+            'void setup() {',
+            '    pinMode(buttonPin, INPUT);',
+            '    pinMode(ledPin, OUTPUT);',
+            '}',
+            '',
+            'void loop() {',
+            '    int buttonState = digitalRead(buttonPin);',
+            '',
+            '    if (buttonState == HIGH) {',
+            '        digitalWrite(ledPin, HIGH); // включить светодиод',
+            '    } else {',
+            '        digitalWrite(ledPin, LOW);  // выключить светодиод',
+            '    }',
+            '}'
+        ];
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = ''; // Очистить предыдущие результаты
+
+        userCode.forEach((line, index) => {
+            const trimmedLine = line.trim();
+            if (trimmedLine !== correctCode[index]) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = `Ошибка: ${trimmedLine} (правильный вариант: ${correctCode[index]})`;
+                resultDiv.appendChild(errorDiv);
+            } else {
+                const correctDiv = document.createElement('div');
+                correctDiv.className = 'correct';
+                correctDiv.textContent = `Правильно: ${trimmedLine}`;
+                resultDiv.appendChild(correctDiv);
+            }
+        });
+    });
+</script>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

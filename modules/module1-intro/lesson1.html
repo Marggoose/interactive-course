@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Занятие 1.1 — Материалы и инструменты</title>
+<link rel="stylesheet" href="../../assets/css/style.css" />
+<style>
+  /* Стили для подсветки ответов */
+  .answer-correct {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  .answer-wrong {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  .quiz-section {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+  }
+  .quiz-section h2 {
+    margin-bottom: 15px;
+  }
+  .quiz-section p {
+    margin: 12px 0 6px;
+  }
+  button#submit-quiz {
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  button#submit-quiz:hover {
+    background-color: #a30000;
+  }
+  .result-message {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  section[id^="part"] {
+    display: none;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Занятие 1.1: Материалы и инструменты</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section>
+    <h2>О чём это занятие?</h2>
+    <p>На данном занятии учащиеся знакомятся с образовательным набором <strong>КЛИК</strong>. Они изучают названия, назначение и правила использования различных элементов конструктора, а также осваивают технику безопасности.</p>
+  </section>
+
+<section style="display: flex; align-items: flex-start; gap: 20px;">
+  <!-- Меню -->
+  <div style="flex: 1;">
+    <h3 id="menu">Основные элементы конструктора</h3>
+    <ul id="parts-list">
+      <li><a href="#part1">1 Блок управления</a></li>
+      <li><a href="#part2">2 DC моторы</a></li>
+      <li><a href="#part3">3 Сервопривод</a></li>
+      <li><a href="#part4">4 Ультразвуковой датчик расстояния</a></li>
+      <li><a href="#part5">5 Датчик линии спаренный</a></li>
+      <li><a href="#part6">6 IR модуль</a></li>
+      <li><a href="#part7">7 Датчик цвета</a></li>
+      <li><a href="#part8">8 Bluetooth модуль</a></li>
+      <li><a href="#part9">9 IR пульт</a></li>
+      <li><a href="#part10">10 Соединительные провода</a></li>
+      <li><a href="#part11">11 USB шнур</a></li>
+      <li><a href="#part12">12 Детали для сборки робота</a></li>
+      <li><a href="#part13">13 Крепёжные детали</a></li>
+      <li><a href="#part14">14 Аккумулятор питания</a></li>
+    </ul>
+  </div>
+  
+  <!-- Правая часть: изображение -->
+  <div style="flex: 1; max-width: 600px;">
+    <div id="image-container" style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <img id="dynamic-image" src="../../assets/img/konstruktor.jpg" alt="Конструктор КЛИК" style="width: 100%; display: block;" />
+    </div>
+  </div>
+</section>
+
+<!-- Динамический контент теперь под блоком flex -->
+<div id="dynamic-content" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px; background: #fafafa; min-height: 150px; margin-top: 20px;">
+  <p>За основу управления электронной частью робота отвечает плата Arduino. Все
+электронные компоненты совместимы с данной платой. Весь набор выдержан в едином
+стиле. Элементам несущей конструкции и крепёжной системы служит пластик ABS,
+который устойчив к механическим, термическим и химическим воздействиям. Все корпуса,
+в которых заключена электроника съёмные.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const partsList = document.getElementById('parts-list');
+    const dynamicImage = document.getElementById('dynamic-image');
+    const dynamicContent = document.getElementById('dynamic-content');
+
+partsList.addEventListener('click', (event) => {
+  const target = event.target;
+  if (target.tagName.toLowerCase() === 'a') {
+    event.preventDefault();
+    const href = target.getAttribute('href'); // например, "#part1"
+    if (!href || !href.startsWith('#')) return;
+    const partId = href.substring(1); // "part1"
+
+    // Найти секцию с id=partId
+    const section = document.getElementById(partId);
+    if (!section) return;
+
+    // Изменить изображение
+    const imgInSection = section.querySelector('img');
+    if (imgInSection) {
+      dynamicImage.src = imgInSection.src;
+      dynamicImage.alt = imgInSection.alt || '';
+    } else {
+      dynamicImage.src = '../../assets/img/konstruktor.jpg';
+      dynamicImage.alt = 'Конструктор КЛИК';
+    }
+
+    // Добавить сюда: обновить текст в dynamicContent
+    const clone = section.cloneNode(true);
+    clone.querySelectorAll('img').forEach(img => img.remove());
+    clone.removeAttribute('id');
+
+    dynamicContent.innerHTML = '';
+    dynamicContent.appendChild(clone);
+  }
+});
+  });
+</script>
+
+
+  <section id="part1">
+    <h3><a href="#menu">Блок управления</a> </h3>
+    <p>Мозгом роботизированного устройства является блок управления, который имеет два
+вывода для подключения DC моторов и шесть выводов для подключение датчиков и
+модулей. Отдельно выведен USB порт для загрузки программы и порт питания для зарядки
+аккумулятора.
+Блок оснащён пьезоэлементом для подачи звуковых сигналов и светодиодом для
+подачи световых сигналов. Также присутствуют кнопка включение/выключения и
+перезагрузки (сброс). Четвёртый порт необходим для подключения Bluetooth модуля.</p>
+    <ul>
+      <strong>Элементы блока управления:</strong>
+<li>кнопка ВКЛ/ВЫКЛ</li>
+<li>кнопка Reset (перезагрузка)</li>
+<li>USB вход</li>
+<li>питание аккумулятора</li>
+<li>выводы для подключения DC моторов</li>
+<li>световой индикатор</li>
+<li>вывод звука</li>
+П1, П2, П3, П4, П5,П6 – порты для подключения датчиков и модулей.
+    </ul>
+    <img src="../../assets/img/blok.jpg" alt="Блок управления" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+  
+  <section id="part2">
+    <h3><a href="#menu">DC моторы</a></h3>
+    <p>Данные моторы – это обычные электромоторы с редукторами на 3–5 Вольт.
+Оснащены дисковыми элементами с двух сторон для крепление колёс на шине или
+зубчатых колёс с использованием, как осей, так и штифтов. Моторы имеют легко
+отличимые провода со штекерами.</p>
+    <img src="../../assets/img/DC motors.jpg" alt="DC моторы" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+  
+  <section id="part3">
+    <h3><a href="#menu">Стереопривод</a></h3>
+    <p>Сервопривод предназначен для точного поворота. Точность поворота определяется
+градусной мерой. В наборе представлен сервопривод с градусом поворота 00 − 1800
+Момент силы данного привода составляет 2 кг/см.</p>
+    <img src="../../assets/img/Stereo.jpg" alt="Стереопривод" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+    <section id="part4">
+    <h3><a href="#menu">Ультразвуковой датчик расстояния</a></h3>
+    <p>Ультразвуковой датчик расстояния измеряет расстояния до объекта. Данный датчик
+часто применяется в робототехнике. В наборе идет датчик HC-SR04. Диапазон измерения
+до 4 метров.</p>
+    <img src="../../assets/img/ultra.jpg" alt="Ультразвуковой датчик расстояния" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+      <section id="part5">
+    <h3><a href="#menu">Датчик линии спаренный</a></h3>
+    <p>Датчик линии в основном применяется для движение мобильного робота по чётко
+выделенной линии, либо белая, либо чёрная.</p>
+    <img src="../../assets/img/lline.jpg" alt="Датчик линии спаренный" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+      <section id="part6">
+    <h3><a href="#menu">IR модуль</a></h3>
+    <p>ИК модуль (IR) предназначен для приёма сигналов в инфракрасном диапазоне. С
+помощью IR пульта можно управлять роботизированным устройством КЛИК.</p>
+    <img src="../../assets/img/IR module.jpg" alt="IR модуль" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+    <section id="part7">
+    <h3><a href="#menu">Датчик цвета</a></h3>
+    <p>ИДатчик цвета применяется для определения цвета и освещённости. Применяется в
+устройствах, где необходимо распознать объекты разного цвета, либо провести замер
+освещённости.</p>
+    <img src="../../assets/img/color.jpg" alt="Датчик цвета" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+  <section>
+    <h3>Правила безопасности</h3>
+    <ol>
+      <li>Работать с моторами только под присмотром учителя.</li>
+      <li>Не прикасаться к подвижным частям во время работы конструкции.</li>
+      <li>Следить за целостностью проводов и разъёмов.</li>
+      <li>Своевременно выключать питание робота.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h3>Форма контроля</h3>
+    <p><strong>Беседа</strong> — учащиеся обсуждают увиденное и услышанное.</p>
+    <p><strong>Показ</strong> — преподаватель демонстрирует элементы конструктора.</p>
+    <p><strong>Наблюдение</strong> — преподаватель оценивает включённость учащихся в обсуждение.</p>
+  </section>
+
+  <!-- Раздел с кратким тестом -->
+  <section class="quiz-section" aria-label="Краткий тест по занятию">
+    <h2>Краткий тест по занятию</h2>
+    <form id="quiz-form" novalidate>
+      <p>1. Какой образовательный набор изучается в этом занятии?</p>
+      <label>
+        <input type="radio" name="question1" value="КЛИК" />
+        КЛИК
+      </label><br />
+      <label>
+        <input type="radio" name="question1" value="LEGO" />
+        LEGO
+      </label><br />
+      <label>
+        <input type="radio" name="question1" value="Arduino" />
+        Arduino
+      </label>
+
+      <p>2. Какие элементы входят в основные части конструктора?</p>
+      <label>
+        <input type="radio" name="question2" value="Моторы и шестерни" />
+        Моторы и шестерни
+      </label><br />
+      <label>
+        <input type="radio" name="question2" value="Клавиатура и мышь" />
+        Клавиатура и мышь
+      </label><br />
+      <label>
+        <input type="radio" name="question2" value="Монитор и колонки" />
+        Монитор и колонки
+      </label>
+
+      <p>3. Какое правило безопасности важно соблюдать при работе с моторами?</p>
+      <label>
+        <input type="radio" name="question3" value="Работать с моторами только под присмотром учителя" />
+        Работать с моторами только под присмотром учителя
+      </label><br />
+      <label>
+        <input type="radio" name="question3" value="Игнорировать инструкции" />
+        Игнорировать инструкции
+      </label><br />
+      <label>
+        <input type="radio" name="question3" value="Трогать движущиеся части во время работы" />
+        Трогать движущиеся части во время работы
+      </label>
+
+      <button type="submit" id="submit-quiz">Отправить</button>
+      <p id="quiz-result" class="result-message" role="alert" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <nav style="margin-top: 40px;">
+    <a href="index.html" style="color: #cc0000;">← Назад к содержанию раздела</a> |
+    <a href="lesson2.html" style="color: #cc0000;">Занятие 1.2 Физические принципы построения роботов →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quiz-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const correctAnswers = {
+      question1: 'КЛИК',
+      question2: 'Моторы и шестерни',
+      question3: 'Работать с моторами только под присмотром учителя',
+    };
+
+    const form = e.target;
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+
+    // Сброс классов подсветки
+    const labels = form.querySelectorAll('label');
+    labels.forEach(label => {
+      label.classList.remove('answer-correct', 'answer-wrong');
+    });
+
+    // Проверяем каждый вопрос
+    for (const [question, correct] of Object.entries(correctAnswers)) {
+      const options = form.elements[question];
+      let answered = false;
+      for (const option of options) {
+        const label = option.parentElement;
+        if (option.checked) {
+          answered = true;
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+            score++;
+          } else {
+            label.classList.add('answer-wrong');
+          }
+        } else {
+          // Если это правильный ответ, подсветим его зеленым, даже если не выбран
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+          }
+        }
+      }
+      // Если не выбран ответ, подсветка не меняется (можно добавить предупреждение, если нужно)
+    }
+
+    const resultText = `Вы ответили правильно на ${score} из ${total} вопросов.`;
+    const resultElem = document.getElementById('quiz-result');
+    resultElem.textContent = resultText;
+
+    // Можно добавить сообщение при полном правильном ответе
+    if (score === total) {
+      resultElem.style.color = '#28a745';
+    } else {
+      resultElem.style.color = '#dc3545';
+    }
+  });
+</script>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

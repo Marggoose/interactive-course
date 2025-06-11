@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Занятие 1.3 — Конструкции и разновидности роботов</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        /* Стили для подсветки ответов */
+        .answer-correct {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .answer-wrong {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .quiz-section {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .quiz-section h2 {
+            margin-bottom: 15px;
+        }
+        .quiz-section p {
+            margin: 12px 0 6px;
+        }
+        button#submit-quiz {
+            margin-top: 15px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #cc0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button#submit-quiz:hover {
+            background-color: #a30000;
+        }
+        .result-message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Занятие 1.3: Конструкции и разновидности роботов</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+        <h2>О чём это занятие?</h2>
+        <p>На этом занятии учащиеся узнают о различных типах конструкций роботов, их особенностях и предназначении. Также будет рассмотрена классификация роботов и их возможные применения.</p>
+    </section>
+
+    <section>
+        <h3>Типы роботов</h3>
+        <p>Роботы можно классифицировать по различным признакам. Рассмотрим основные типы:</p>
+        <ul>
+            <li><strong>Мобильные роботы:</strong> роботы с колесами, гусеницами или другие передвигающиеся устройства.</li>
+            <li><strong>Шагающие роботы:</strong> роботы, имитирующие ходьбу человека или животных.</li>
+            <li><strong>Манипуляторы:</strong> роботы с руками, использующиеся для выполнения различных операций.</li>
+            <li><strong>Роботы-сенсоры:</strong> роботы с датчиками, которые могут анализировать окружающую среду.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Примеры различных конструкций</h3>
+        <p>Давайте рассмотрим несколько примеров, чтобы понять, как они могут быть использованы в реальной жизни.</p>
+        
+        <div class="robot-example">
+            <h4>1. Мобильный робот с колесами</h4>
+            <img src="../../assets/images/wheeled_robot.jpg" alt="Мобильный робот с колесами" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;">
+            <p>Этот тип робота используется для перемещения по различным поверхностям. Он может быть оснащён датчиками для избегания препятствий.</p>
+        </div>
+
+        <div class="robot-example">
+            <h4>2. Шагающий робот</h4>
+            <img src="../../assets/images/walking_robot.jpg" alt="Шагающий робот" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;">
+            <p>Шагающие роботы могут имитировать движения животных или людей, что делает их полезными для сложных ландшафтов.</p>
+        </div>
+
+        <div class="robot-example">
+            <h4>3. Манипулятор</h4>
+            <img src="../../assets/images/robot_arm.jpg" alt="Робот-манипулятор" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;">
+            <p>Манипулятор способен выполнять точные операции с объектами, например, собирать детали или проводить измерения.</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Обсуждение</h3>
+        <p>Учащиеся обсуждают, в каких ситуациях каждый тип робота может быть полезен. Например, мобильные роботы используются для доставки, а манипуляторы — в промышленности.</p>
+    </section>
+
+    <section>
+        <h3>Форма контроля</h3>
+        <p><strong>Наблюдение:</strong> преподаватель следит за участием студентов в обсуждении типов роботов и их применении.</p>
+    </section>
+
+    <!-- Раздел с кратким тестом -->
+    <section class="quiz-section" aria-label="Краткий тест по занятию">
+        <h2>Краткий тест по занятию</h2>
+        <form id="quiz-form" novalidate>
+            <p>1. Какой тип робота использует колеса для передвижения?</p>
+            <label>
+                <input type="radio" name="question1" value="Мобильные роботы" />
+                Мобильные роботы
+            </label><br />
+            <label>
+                <input type="radio" name="question1" value="Шагающие роботы" />
+                Шагающие роботы
+            </label><br />
+            <label>
+                <input type="radio" name="question1" value="Манипуляторы" />
+                Манипуляторы
+            </label>
+
+            <p>2. Какой тип робота имитирует движения человека или животных?</p>
+            <label>
+                <input type="radio" name="question2" value="Шагающие роботы" />
+                Шагающие роботы
+            </label><br />
+            <label>
+                <input type="radio" name="question2" value="Мобильные роботы" />
+                Мобильные роботы
+            </label><br />
+            <label>
+                <input type="radio" name="question2" value="Роботы-сенсоры" />
+                Роботы-сенсоры
+            </label>
+
+            <p>3. Какой тип робота используется для выполнения точных операций?</p>
+            <label>
+                <input type="radio" name="question3" value="Манипуляторы" />
+                Манипуляторы
+            </label><br />
+            <label>
+                <input type="radio" name="question3" value="Мобильные роботы" />
+                Мобильные роботы
+            </label><br />
+            <label>
+                <input type="radio" name="question3" value="Шагающие роботы" />
+                Шагающие роботы
+            </label>
+
+            <button type="submit" id="submit-quiz">Отправить</button>
+            <p id="quiz-result" class="result-message" role="alert" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <nav style="margin-top: 40px;">
+        <a href="lesson2.html" style="color: #cc0000;">← Назад к занятию 1.2</a> |
+        <a href="module1-test.html" style="color:#cc0000;">Пройти тестирование →</a>
+    </nav>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('quiz-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const correctAnswers = {
+            question1: 'Мобильные роботы',
+            question2: 'Шагающие роботы',
+            question3: 'Манипуляторы',
+        };
+
+        const form = e.target;
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        // Сброс классов подсветки
+        const labels = form.querySelectorAll('label');
+        labels.forEach(label => {
+            label.classList.remove('answer-correct', 'answer-wrong');
+        });
+
+        // Проверяем каждый вопрос
+        for (const [question, correct] of Object.entries(correctAnswers)) {
+            const options = form.elements[question];
+            let answered = false;
+            for (const option of options) {
+                const label = option.parentElement;
+                if (option.checked) {
+                    answered = true;
+                    if (option.value === correct) {
+                        label.classList.add('answer-correct');
+                        score++;
+                    } else {
+                        label.classList.add('answer-wrong');
+                    }
+                } else {
+                    // Если это правильный ответ, подсветим его зеленым, даже если не выбран
+                    if (option.value === correct) {
+                        label.classList.add('answer-correct');
+                    }
+                }
+            }
+        }
+
+        const resultText = `Вы ответили правильно на ${score} из ${total} вопросов.`;
+        const resultElem = document.getElementById('quiz-result');
+        resultElem.textContent = resultText;
+
+        // Можно добавить сообщение при полном правильном ответе
+        if (score === total) {
+            resultElem.style.color = '#28a745';
+        } else {
+            resultElem.style.color = '#dc3545';
+        }
+    });
+</script>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Занятие 2.3 — Практика в mBlock</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+  .code-input {
+    width: 100%;
+    height: 100px;
+    font-family: monospace;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  .result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+    padding: 5px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 5px;
+  }
+  .correct {
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #28a745;
+    padding: 5px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+    <h1>Занятие 2.3: Знакомство со средой mBlock (практика)</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+    <h2>Практическое занятие по mBlock</h2>
+    <p>На этом занятии мы применим знания, полученные ранее, и соберём полноценную программу в mBlock для управления светодиодом и зуммером.</p>
+    </section>
+
+    <section>
+    <h3>Цель занятия</h3>
+    <p>Научиться использовать блоки логики, условий и циклов для реализации простого алгоритма управления устройствами на плате.</p>
+    </section>
+
+    <section>
+    <h3>Задание: Управление светодиодом и зуммером</h3>
+    <p>Необходимо создать программу, которая:</p>
+    <ul>
+        <li>Включает светодиод на пине 13, когда нажата кнопка;</li>
+        <li>Издаёт звук зуммера на пине 12 при удержании кнопки;</li>
+        <li>Отключает оба элемента при отпускании кнопки.</li>
+    </ul>
+    <img src="../../assets/images/mblock-practice.png" alt="Блоки mBlock с логикой" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;">
+    </section>
+
+    <section>
+    <h3>Пошаговая инструкция</h3>
+    <ol>
+        <li>Добавьте блок <strong>«при нажатии флага»</strong>.</li>
+        <li>Вставьте цикл <strong>«всегда»</strong>, чтобы проверка работала постоянно.</li>
+        <li>Используйте условие <strong>«если…то…иначе»</strong> и проверяйте состояние кнопки.</li>
+        <li>Внутри условия управляйте светодиодом и зуммером с помощью блоков <strong>«установить цифровой пин…в…»</strong>.</li>
+    </ol>
+    </section>
+
+    <section>
+    <h3>Советы</h3>
+    <ul>
+        <li>Убедитесь, что правильные номера пинов указаны в блоках.</li>
+        <li>Проверьте, что вы загрузили прошивку на плату перед запуском программы.</li>
+        <li>Используйте кнопку «Upload» для загрузки кода, если работаете в режиме Arduino.</li>
+    </ul>
+    </section>
+
+    <section>
+    <h3>Ваш код</h3>
+    <textarea id="user-code" class="code-input" placeholder="Введите ваш код здесь..."></textarea>
+    <button id="check-code">Проверить код</button>
+    <div id="result" class="result"></div>
+    </section>
+
+    <section>
+    <h3>Форма контроля</h3>
+    <p><strong>Беседа, показ, наблюдение:</strong> учащиеся демонстрируют свою программу, объясняют работу каждого блока и загружают код на плату.</p>
+    </section>
+
+    <nav style="margin-top: 40px;">
+    <a href="lesson2.html" style="color: #cc0000;">← Назад к занятию 2.2</a> |
+    <a href="lesson4.html" style="color: #cc0000;">Занятие 2.4 →</a>
+    </nav>
+</main>
+
+<footer>
+    <div class="container">
+    <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+
+<script>
+  document.getElementById('check-code').addEventListener('click', function() {
+    const userCode = document.getElementById('user-code').value.split('\n');
+    const correctCode = [
+      'при нажатии флага',
+      'всегда',
+      'если кнопка нажата',
+      'установить цифровой пин 13 в высокий',
+      'установить цифровой пин 12 в высокий',
+      'иначе',
+      'установить цифровой пин 13 в низкий',
+      'установить цифровой пин 12 в низкий'
+    ];
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = ''; // Очистить предыдущие результаты
+
+    userCode.forEach((line, index) => {
+      const trimmedLine = line.trim();
+      if (trimmedLine !== correctCode[index]) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error';
+        errorDiv.textContent = `Ошибка: ${trimmedLine} (правильный вариант: ${correctCode[index]})`;
+        resultDiv.appendChild(errorDiv);
+      } else {
+        const correctDiv = document.createElement('div');
+        correctDiv.className = 'correct';
+        correctDiv.textContent = `Правильно: ${trimmedLine}`;
+        resultDiv.appendChild(correctDiv);
+      }
+    });
+  });
+</script>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

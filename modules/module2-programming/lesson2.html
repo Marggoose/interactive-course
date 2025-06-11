@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Занятие 2.2 — Знакомство со средой ArduinoIDE</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+  /* Стили для подсветки ответов */
+  .answer-correct {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .answer-wrong {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .quiz-section {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+  }
+  .quiz-section h2 {
+    margin-bottom: 15px;
+  }
+  button#submit-quiz {
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  button#submit-quiz:hover {
+    background-color: #a30000;
+  }
+  .result-message {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+    <h1>Занятие 2.2: Знакомство со средой программирования ArduinoIDE</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+    <h2>О чём это занятие?</h2>
+    <p>На этом занятии мы познакомимся с текстовой средой программирования <strong>ArduinoIDE</strong>, которая широко используется в проектах робототехники. Мы научимся устанавливать ArduinoIDE, подключать плату и загружать первую тестовую программу.</p>
+    </section>
+
+    <section>
+    <h3>Шаг 1: Установка ArduinoIDE</h3>
+    <p>Скачайте ArduinoIDE с официального сайта <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener noreferrer">arduino.cc</a>.</p>
+    <ol>
+        <li>Выберите вашу операционную систему и загрузите установочный файл.</li>
+        <li>Установите программу, следуя стандартным инструкциям.</li>
+        <li>Запустите ArduinoIDE.</li>
+    </ol>
+    <img src="../../assets/images/arduino-download.png" alt="Установка ArduinoIDE" style="max-width: 100%; border-radius: 8px; border: 1px solid #ccc; margin-top: 10px;">
+    </section>
+
+    <section>
+    <h3>Шаг 2: Интерфейс ArduinoIDE</h3>
+    <p>Основные элементы интерфейса ArduinoIDE:</p>
+    <ul>
+        <li><strong>Редактор кода</strong> — здесь пишется программа на языке C/C++.</li>
+        <li><strong>Кнопки компиляции и загрузки</strong> — для проверки и отправки кода на плату.</li>
+        <li><strong>Монитор порта</strong> — для связи с микроконтроллером через COM-порт.</li>
+    </ul>
+    <img src="../../assets/images/arduino-interface.png" alt="Интерфейс ArduinoIDE" style="max-width: 100%; border-radius: 8px; border: 1px solid #ccc; margin-top: 10px;">
+    </section>
+
+    <section>
+    <h3>Шаг 3: Первая программа (Blink)</h3>
+    <p>В ArduinoIDE по умолчанию есть пример «Blink» — мигание встроенным светодиодом. Он позволяет проверить работу платы и соединения.</p>
+    <pre><code>
+// Программа мигает встроенным светодиодом на пине 13
+
+void setup() {
+  pinMode(13, OUTPUT); // Настройка пина 13 как выход
+}
+
+void loop() {
+  digitalWrite(13, HIGH); // Включить светодиод
+  delay(1000);            // Подождать 1 секунду
+  digitalWrite(13, LOW);  // Выключить светодиод
+  delay(1000);            // Подождать 1 секунду
+}
+    </code></pre>
+    <p>Нажмите кнопку <strong>«Загрузить»</strong>, чтобы отправить программу на плату и увидеть результат.</p>
+    </section>
+
+    <section>
+    <h3>Форма контроля</h3>
+    <p><strong>Наблюдение:</strong> преподаватель проверяет, запустили ли учащиеся среду, собрали схему и успешно загрузили тестовую программу на плату.</p>
+    </section>
+
+    <!-- Добавленный раздел с кратким тестом -->
+    <section class="quiz-section" aria-label="Краткий тест по занятию">
+        <h2>Краткий тест по занятию</h2>
+        <form id="quiz-form" novalidate>
+            <p>1. Что такое ArduinoIDE?</p>
+            <label><input type="radio" name="q1" value="Текстовый язык программирования" /> Текстовый язык программирования</label>
+            <label><input type="radio" name="q1" value="Среда разработки для Arduino" /> Среда разработки для Arduino</label>
+            <label><input type="radio" name="q1" value="Операционная система" /> Операционная система</label>
+
+            <p>2. Какой язык программирования используется в ArduinoIDE?</p>
+            <label><input type="radio" name="q2" value="Python" /> Python</label>
+            <label><input type="radio" name="q2" value="C/C++" /> C/C++</label>
+            <label><input type="radio" name="q2" value="Java" /> Java</label>
+
+            <p>3. Что делает функция <code>pinMode()</code> в ArduinoIDE?</p>
+            <label><input type="radio" name="q3" value="Настраивает пин как вход или выход" /> Настраивает пин как вход или выход</label>
+            <label><input type="radio" name="q3" value="Включает светодиод" /> Включает светодиод</label>
+            <label><input type="radio" name="q3" value="Загружает программу на плату" /> Загружает программу на плату</label>
+
+            <button type="submit" id="submit-quiz">Отправить</button>
+            <p id="quiz-result" class="result-message" role="alert" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <nav style="margin-top: 40px;">
+        <a href="lesson1.html" style="color: #cc0000;">← Назад к 2.1</a>
+    </nav>
+    <nav style="margin-top: 40px;">
+    <a href="lesson3.html" style="color: #cc0000;">→ Перейти к уроку 2.3: Знакомство со средой программирования mBlock</a>
+    </nav>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+
+<script>
+  document.getElementById('quiz-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const correctAnswers = {
+      q1: 'Среда разработки для Arduino',
+      q2: 'C/C++',
+      q3: 'Настраивает пин как вход или выход'
+    };
+
+    const form = e.target;
+    let score = 0;
+    const total = Object.keys(correctAnswers).length;
+
+    // Сброс классов подсветки
+    const labels = form.querySelectorAll('label');
+    labels.forEach(label => {
+      label.classList.remove('answer-correct', 'answer-wrong');
+    });
+
+    for (const [question, correct] of Object.entries(correctAnswers)) {
+      const options = form.elements[question];
+      let answered = false;
+      for (const option of options) {
+        const label = option.parentElement;
+        if (option.checked) {
+          answered = true;
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+            score++;
+          } else {
+            label.classList.add('answer-wrong');
+          }
+        } else {
+          // Подсветить правильный ответ, даже если не выбран
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+          }
+        }
+      }
+    }
+
+    const resultElem = document.getElementById('quiz-result');
+    resultElem.textContent = `Вы ответили правильно на ${score} из ${total} вопросов.`;
+    resultElem.style.color = score === total ? '#28a745' : '#dc3545';
+  });
+</script>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

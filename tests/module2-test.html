@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Тест по Модулю 2</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Тестирование: Модуль 2 — Программирование</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="about.html">О курсе</a></li>
+          <li><a href="modules/module2-intro/index.html">Модуль 2</a></li>
+          <li><a href="contact.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <form id="test-form">
+      <section>
+        <h2>Вопрос 1: Для чего используется среда mBlock?</h2>
+        <label><input type="radio" name="q1" value="a"> Для 3D-моделирования</label><br>
+        <label><input type="radio" name="q1" value="b"> Для визуального программирования роботов</label><br>
+        <label><input type="radio" name="q1" value="c"> Для редактирования видео</label><br>
+      </section>
+
+      <section>
+        <h2>Вопрос 2: Какой язык программирования используется в ArduinoIDE?</h2>
+        <label><input type="radio" name="q2" value="a"> Python</label><br>
+        <label><input type="radio" name="q2" value="b"> Scratch</label><br>
+        <label><input type="radio" name="q2" value="c"> C/C++</label><br>
+      </section>
+
+      <section>
+        <h2>Вопрос 3: Что из перечисленного является преимуществом mBlock?</h2>
+        <label><input type="radio" name="q3" value="a"> Программирование без кода</label><br>
+        <label><input type="radio" name="q3" value="b"> Только английский язык интерфейса</label><br>
+        <label><input type="radio" name="q3" value="c"> Требуется мощный компьютер</label><br>
+      </section>
+
+      <section>
+        <h2>Вопрос 4: Для чего чаще всего используется ArduinoIDE?</h2>
+        <label><input type="radio" name="q4" value="a"> Для настройки Wi-Fi</label><br>
+        <label><input type="radio" name="q4" value="b"> Для написания и загрузки программ в микроконтроллер</label><br>
+        <label><input type="radio" name="q4" value="c"> Для создания сайтов</label><br>
+      </section>
+
+      <section style="margin-top: 30px;">
+        <button type="button" onclick="checkTest()" style="background-color: #cc0000; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+          Проверить ответы
+        </button>
+        <div id="test-result" style="margin-top: 20px; font-weight: bold;"></div>
+      </section>
+    </form>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Интерактивный курс по робототехнике</p>
+    </div>
+  </footer>
+
+  <script>
+    function checkTest() {
+      const correctAnswers = {
+        q1: 'b',
+        q2: 'c',
+        q3: 'a',
+        q4: 'b'
+      };
+
+      let score = 0;
+      let total = Object.keys(correctAnswers).length;
+
+      for (let key in correctAnswers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === correctAnswers[key]) {
+          score++;
+        }
+      }
+
+      const resultDiv = document.getElementById("test-result");
+      resultDiv.textContent = `Ваш результат: ${score} из ${total}`;
+      resultDiv.style.color = score === total ? 'green' : '#cc0000';
+    }
+  </script>
+</body>
+</html>

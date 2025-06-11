@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Занятие 2.1 — Знакомство со средой программирования mBlock</title>
+<link rel="stylesheet" href="../../assets/css/style.css" />
+<style>
+  /* Стили для подсветки ответов */
+  .answer-correct {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .answer-wrong {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .quiz-section {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+  }
+  .quiz-section h2 {
+    margin-bottom: 15px;
+  }
+  button#submit-quiz {
+    margin-top: 15px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  button#submit-quiz:hover {
+    background-color: #a30000;
+  }
+  .result-message {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Занятие 2.1: Знакомство со средой программирования mBlock</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section>
+    <h2>О чём это занятие?</h2>
+    <p>В этом уроке мы познакомимся с одной из самых популярных сред для обучения робототехнике — <strong>mBlock</strong>. mBlock использует блоковое программирование, что позволяет новичкам легко создавать программы, используя визуальные блоки вместо текста.</p>
+    <p>Мы начнём с установки mBlock, изучим его интерфейс и основные инструменты.</p>
+  </section>
+
+  <section>
+    <h3>Шаг 1: Установка mBlock</h3>
+    <p>Для начала скачайте и установите mBlock. Перейдите на официальный сайт <a href="https://www.mblock.cc/" target="_blank" rel="noopener noreferrer">mBlock</a> и выберите версию для вашей операционной системы.</p>
+    <ol>
+      <li>Скачайте установочный файл для Windows или Mac.</li>
+      <li>Запустите установку и следуйте инструкциям на экране.</li>
+      <li>После установки запустите mBlock.</li>
+    </ol>
+    <img src="../../assets/images/mblock-download.png" alt="Загрузка mBlock" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+  <section>
+    <h3>Шаг 2: Изучаем интерфейс mBlock</h3>
+    <p>После установки мы откроем mBlock и изучим его интерфейс. Вот основные элементы, с которыми мы будем работать:</p>
+    <ul>
+      <li><strong>Область для блоков:</strong> здесь будут располагаться все доступные блоки программирования.</li>
+      <li><strong>Область кода:</strong> место, где собираются блоки для создания программы.</li>
+      <li><strong>Рабочая область:</strong> отображает ваш робот и его действия.</li>
+    </ul>
+    <img src="../../assets/images/mblock-interface.jpg" alt="Интерфейс mBlock" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+  <section>
+    <h3>Шаг 3: Создаём первую программу</h3>
+    <p>Теперь давайте создадим простую программу для управления светодиодом на роботе:</p>
+    <ol>
+      <li>В разделе «Блоки» выберите команду, которая включает светодиод.</li>
+      <li>Перетащите этот блок в рабочую область.</li>
+      <li>Настройте параметры блока, чтобы он включал светодиод на определённом пине робота.</li>
+      <li>Нажмите кнопку «Запуск», чтобы увидеть результат.</li>
+    </ol>
+    <img src="../../assets/images/mblock-led-program.png" alt="Программа для светодиода в mBlock" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;" />
+  </section>
+
+  <section>
+    <h3>Форма контроля</h3>
+    <p><strong>Просмотр и анализ:</strong> преподаватель следит за тем, как студенты выполняют задание и помогает с настройкой первой программы.</p>
+  </section>
+
+  <!-- Добавленный раздел с кратким тестом -->
+  <section class="quiz-section" aria-label="Краткий тест по занятию">
+    <h2>Краткий тест по занятию</h2>
+    <form id="quiz-form" novalidate>
+      <p>1. Что такое mBlock?</p>
+      <label><input type="radio" name="q1" value="Текстовый язык программирования" /> Текстовый язык программирования</label>
+      <label><input type="radio" name="q1" value="Среда блокового программирования" /> Среда блокового программирования</label>
+      <label><input type="radio" name="q1" value="Операционная система" /> Операционная система</label>
+
+      <p>2. Где располагаются блоки программирования в mBlock?</p>
+      <label><input type="radio" name="q2" value="Область кода" /> Область кода</label>
+      <label><input type="radio" name="q2" value="Рабочая область" /> Рабочая область</label>
+      <label><input type="radio" name="q2" value="Область для блоков" /> Область для блоков</label>
+
+      <p>3. Какой шаг не входит в создание первой программы для управления светодиодом?</p>
+      <label><input type="radio" name="q3" value="Выбор команды включения светодиода" /> Выбор команды включения светодиода</label>
+      <label><input type="radio" name="q3" value="Настройка параметров блока" /> Настройка параметров блока</label>
+      <label><input type="radio" name="q3" value="Перезапуск компьютера" /> Перезапуск компьютера</label>
+
+      <button type="submit" id="submit-quiz">Отправить</button>
+      <p id="quiz-result" class="result-message" role="alert" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <nav style="margin-top: 40px;">
+    <a href="lesson2.html" style="color: #cc0000;">→ Перейти к уроку 2.2: Знакомство со средой программирования mBlock</a>
+  </nav>
+
+  <nav style="margin-top: 40px;">
+    <a href="../module2-programming/index.html" style="color: #cc0000;">← Назад к содержанию модуля</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('quiz-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const correctAnswers = {
+      q1: 'Среда блокового программирования',
+      q2: 'Область для блоков',
+      q3: 'Перезапуск компьютера'
+    };
+
+    const form = e.target;
+    let score = 0;
+    const total = Object.keys(correctAnswers).length;
+
+    // Сброс классов подсветки
+    const labels = form.querySelectorAll('label');
+    labels.forEach(label => {
+      label.classList.remove('answer-correct', 'answer-wrong');
+    });
+
+    for (const [question, correct] of Object.entries(correctAnswers)) {
+      const options = form.elements[question];
+      let answered = false;
+      for (const option of options) {
+        const label = option.parentElement;
+        if (option.checked) {
+          answered = true;
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+            score++;
+          } else {
+            label.classList.add('answer-wrong');
+          }
+        } else {
+          // Подсветить правильный ответ, даже если не выбран
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+          }
+        }
+      }
+    }
+
+    const resultElem = document.getElementById('quiz-result');
+    resultElem.textContent = `Вы ответили правильно на ${score} из ${total} вопросов.`;
+    resultElem.style.color = score === total ? '#28a745' : '#dc3545';
+  });
+</script>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

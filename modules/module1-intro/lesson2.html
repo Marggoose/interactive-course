@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Занятие 1.2 — Физические принципы роботов</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        /* Стили для подсветки ответов */
+        .answer-correct {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .answer-wrong {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .quiz-section {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .quiz-section h2 {
+            margin-bottom: 15px;
+        }
+        .quiz-section p {
+            margin: 12px 0 6px;
+        }
+        button#submit-quiz {
+            margin-top: 15px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #cc0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button#submit-quiz:hover {
+            background-color: #a30000;
+        }
+        .result-message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Занятие 1.2: Физические принципы построения роботов</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section>
+        <h2>Цель занятия</h2>
+        <p>Познакомить учащихся с основами физики, лежащими в основе работы роботов: движение, энергия, передача усилия и механизмы.</p>
+    </section>
+
+    <section>
+        <h3>Основные принципы</h3>
+        <ul>
+            <li><strong>Электричество:</strong> подача питания к двигателям и датчикам.</li>
+            <li><strong>Электродвигатель:</strong> преобразует электрическую энергию в механическую.</li>
+            <li><strong>Механическая передача:</strong> использование шестерён, валов и рычагов для движения частей.</li>
+            <li><strong>Центр тяжести:</strong> устойчивость конструкции зависит от его положения.</li>
+            <li><strong>Сила трения:</strong> влияет на движение по поверхности.</li>
+        </ul>
+        <img src="../../assets/images/motor-physics.png" alt="Физика в роботах" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px; margin-top: 10px;">
+    </section>
+
+    <section>
+        <h3>Примеры</h3>
+        <p>Ученики наблюдают, как включение мотора приводит в движение колёса. Обсуждаются причины замедления при увеличении трения или наклона поверхности.</p>
+    </section>
+
+    <section>
+        <h3>Форма контроля</h3>
+        <p><strong>Наблюдение:</strong> преподаватель следит за пониманием учащимися связи между физическими явлениями и движением робота во время демонстрации.</p>
+    </section>
+
+    <!-- Раздел с кратким тестом -->
+    <section class="quiz-section" aria-label="Краткий тест по занятию">
+        <h2>Краткий тест по занятию</h2>
+        <form id="quiz-form" novalidate>
+            <p>1. Какой принцип используется для передачи движения в роботах?</p>
+            <label>
+                <input type="radio" name="question1" value="Электричество" />
+                Электричество
+            </label><br />
+            <label>
+                <input type="radio" name="question1" value="Механическая передача" />
+                Механическая передача
+            </label><br />
+            <label>
+                <input type="radio" name="question1" value="Гидравлика" />
+                Гидравлика
+            </label>
+
+            <p>2. Что преобразует электрическую энергию в механическую?</p>
+            <label>
+                <input type="radio" name="question2" value="Электродвигатель" />
+                Электродвигатель
+            </label><br />
+            <label>
+                <input type="radio" name="question2" value="Аккумулятор" />
+                Аккумулятор
+            </label><br />
+            <label>
+                <input type="radio" name="question2" value="Датчик" />
+                Датчик
+            </label>
+
+            <p>3. Какое явление влияет на движение по поверхности?</p>
+            <label>
+                <input type="radio" name="question3" value="Сила трения" />
+                Сила трения
+            </label><br />
+            <label>
+                <input type="radio" name="question3" value="Сила тяжести" />
+                Сила тяжести
+            </label><br />
+            <label>
+                <input type="radio" name="question3" value="Сила инерции" />
+                Сила инерции
+            </label>
+
+            <button type="submit" id="submit-quiz">Отправить</button>
+            <p id="quiz-result" class="result-message" role="alert" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <nav style="margin-top: 40px;">
+        <a href="lesson1.html" style="color: #cc0000;">← Назад к занятию 1.1</a> | 
+        <a href="lesson3.html" style="color: #cc0000;">Занятие 1.3 Конструкции и разновидности роботов →</a>
+    </nav>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+    </div>
+</footer>
+
+<script>
+  document.getElementById('quiz-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+const correctAnswers = {
+            question1: 'Механическая передача',
+            question2: 'Электродвигатель',
+            question3: 'Сила трения',
+        };
+
+    const form = e.target;
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+
+    // Сброс классов подсветки
+    const labels = form.querySelectorAll('label');
+    labels.forEach(label => {
+      label.classList.remove('answer-correct', 'answer-wrong');
+    });
+
+    // Проверяем каждый вопрос
+    for (const [question, correct] of Object.entries(correctAnswers)) {
+      const options = form.elements[question];
+      let answered = false;
+      for (const option of options) {
+        const label = option.parentElement;
+        if (option.checked) {
+          answered = true;
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+            score++;
+          } else {
+            label.classList.add('answer-wrong');
+          }
+        } else {
+          // Если это правильный ответ, подсветим его зеленым, даже если не выбран
+          if (option.value === correct) {
+            label.classList.add('answer-correct');
+          }
+        }
+      }
+      // Если не выбран ответ, подсветка не меняется (можно добавить предупреждение, если нужно)
+    }
+
+    const resultText = `Вы ответили правильно на ${score} из ${total} вопросов.`;
+    const resultElem = document.getElementById('quiz-result');
+    resultElem.textContent = resultText;
+
+    // Можно добавить сообщение при полном правильном ответе
+    if (score === total) {
+      resultElem.style.color = '#28a745';
+    } else {
+      resultElem.style.color = '#dc3545';
+    }
+  });
+</script>
+
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/interactive.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Тест по Модулю 1</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+      <header>
+        <div class="container">
+          <h1>Тестирование: Модуль 1 — Вводное занятие</h1>
+        <nav>
+            <ul>
+        <li><a href="../../index.html">Главная</a></li>
+        <li><a href="../../about.html">О курсе</a></li>
+        <li><a href="../../modules/module1-intro/index.html">Разделы</a></li>
+        <li><a href="../../contact.html">Контакты</a></li>
+        <li><a href="../../achievements.html">Достижения</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+  <main class="container">
+    <form id="test-form">
+      <section>
+        <h2>Вопрос 1: Что входит в образовательный набор КЛИК?</h2>
+        <div class="answer-block">
+          <label><input type="radio" name="q1" value="a"> Только контроллер и моторы</label>
+          <label><input type="radio" name="q1" value="b"> Паяльник, провода, аккумуляторы</label>
+          <label><input type="radio" name="q1" value="c"> Инструменты, детали конструктора, датчики, контроллер</label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Вопрос 2: Что является основой движения робота?</h2>
+        <div class="answer-block">
+        <label><input type="radio" name="q2" value="a"> Сила трения</label><br>
+        <label><input type="radio" name="q2" value="b"> Электродвигатель и питание</label><br>
+        <label><input type="radio" name="q2" value="c"> Передача по Wi-Fi</label><br>
+        </div>
+      </section>
+
+      <section>
+        <h2>Вопрос 3: Какие типы роботов существуют?</h2>
+        <div class="answer-block">
+        <label><input type="radio" name="q3" value="a"> Только промышленные</label><br>
+        <label><input type="radio" name="q3" value="b">  Стационарные, мобильные, гуманоидные</label><br>
+        <label><input type="radio" name="q3" value="c"> Только игрушечные</label><br>
+        </div>
+      </section>
+
+      <section style="margin-top: 30px;">
+        <button type="button" onclick="checkTest()" style="background-color: #cc0000; color: #fff; padding: 10px 20px; border: none; cursor: pointer;">
+          Проверить ответы
+        </button>
+        <div id="test-result" style="margin-top: 20px; font-weight: bold;"></div>
+      </section>
+    </form>
+    <a href="../module2-programming/index.html" style="color: #cc0000;">Модуль 2 →</a>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Интерактивный курс по робототехнике</p>
+    </div>
+  </footer>
+
+  <script>
+    function checkTest() {
+      const correctAnswers = {
+        q1: 'c',
+        q2: 'b',
+        q3: 'b'
+      };
+
+      let score = 0;
+      let total = Object.keys(correctAnswers).length;
+
+      for (let key in correctAnswers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === correctAnswers[key]) {
+          score++;
+        }
+      }
+
+      const resultDiv = document.getElementById("test-result");
+      resultDiv.textContent = `Ваш результат: ${score} из ${total}`;
+      resultDiv.style.color = score === total ? 'green' : '#cc0000';
+    }
+  </script>
+  <script>
+    const currentUser = localStorage.getItem('loggedInUser');
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+let user = users.find(u => u.username === currentUser);
+if (user && user.role === 'student') {
+  user.progress.module1 = true; // или другой модуль
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
+  </script>
+</body>
+</html>
