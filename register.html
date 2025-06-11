@@ -11,6 +11,19 @@
     <h1>Регистрация</h1>
 </header>
 <body>
+    <div class="container">
+        <h1>Интерактивный курс по мобильной робототехнике</h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+        <section class="moduls">
 <h2>Регистрация</h2>
 <form id="registerForm">
     <label>Логин: <input type="text" id="username" required></label><br>
@@ -24,7 +37,7 @@
     <button type="submit">Зарегистрироваться</button>
 </form>
 <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
-
+</section>
 <script>
     document.getElementById('registerForm').addEventListener('submit', function (e) {
         e.preventDefault();

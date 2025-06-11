@@ -22,14 +22,33 @@
         </nav>
     </div>
 </header>
+<div class="container">
+        <h1>Интерактивный курс по мобильной робототехнике</h1>
+        <nav>
+            <ul>
+                <li><a href="login.html">Вход</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О курсе</a></li>
+                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+        <section class="moduls">
 <p>Добро пожаловать, учитель!</p>
 <button onclick="logout()">Выйти</button>
+</section>
+    <section class="moduls">
+        <h2>Ваши ученики</h2>
+        <p>Здесь будет список ваших учеников</p>
+    </section>
 <script>
     function logout() {
         localStorage.removeItem('user');
         window.location.href = 'index.html';
     }
 </script>
+
 </body>
 <footer>
     <div class="container">
