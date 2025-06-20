@@ -3,46 +3,519 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерактивный курс по мобильной робототехнике</title>
+    <title>Вход в систему | Курс по робототехнике</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #e63946;
+            --light-red: #ff758f;
+            --dark-red: #c1121f;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #333333;
+            --medium-gray: #e9ecef;
+            --success-green: #2a9d8f;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.1)"><circle cx="50" cy="50" r="40"/></svg>') no-repeat;
+            background-size: contain;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.1)"><polygon points="50,5 95,95 5,95"/></svg>') no-repeat;
+            background-size: contain;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            background-color: var(--dark-red);
+            padding: 15px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            flex: 1;
+            padding: 40px 0;
+            background-color: var(--light-gray);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="%23e63946" stroke-width="0.5" stroke-opacity="0.1"><path d="M0,0 L100,100 M100,0 L0,100"/></svg>');
+        }
+        
+        .login-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(230, 57, 70, 0.2);
+        }
+        
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-red), var(--light-red));
+        }
+        
+        .login-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23e63946" fill-opacity="0.05"><path d="M50,5 L90,90 L10,90 Z"/></svg>') no-repeat;
+            background-size: contain;
+            z-index: 0;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .login-header h2 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .login-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--light-red));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .key-svg {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: block;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        #loginForm {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-group label i {
+            color: var(--primary-red);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .form-control {
+            padding: 14px 15px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: var(--light-gray);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+            background-color: var(--white);
+        }
+        
+        .btn {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover::after {
+            transform: translateX(100%) rotate(45deg);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.95rem;
+        }
+        
+        .register-link a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .register-link a:hover {
+            color: var(--dark-red);
+        }
+        
+        .register-link a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+        
+        .register-link a:hover::after {
+            width: 100%;
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--light-red);
+            transform: translateY(-3px);
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Сообщение об ошибке */
+        .error-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-red);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+        }
+        
+        .error-message.show {
+            transform: translateX(0);
+        }
+        
+        .error-message i {
+            font-size: 1.5rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .login-container {
+                padding: 30px 20px;
+                margin: 0 15px;
+            }
+            
+            .login-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .login-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .form-control, .btn {
+                padding: 12px 15px;
+            }
+            
+            .key-svg {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
+<header class="animate__animated animate__fadeIn">
     <div class="container">
-        <h1>Вход в систему</h1>
-        <nav>
-            <ul>
-                <li><a href="login.html">Вход</a></li>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О курсе</a></li>
-                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
-                <li><a href="contact.html">Контакты</a></li>
-            </ul>
-        </nav>
+        <h1><i class="fas fa-sign-in-alt"></i> Вход в систему</h1>
     </div>
 </header>
-<body>
+
+<nav class="animate__animated animate__fadeIn">
     <div class="container">
-        <h1>Интерактивный курс по мобильной робототехнике</h1>
-        <nav>
-            <ul>
-                <li><a href="login.html">Вход</a></li>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О курсе</a></li>
-                <li><a href="modules/module1-intro/index.html">Разделы</a></li>
-                <li><a href="contact.html">Контакты</a></li>
-            </ul>
-        </nav>
+        <ul>
+            <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Вход</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> О курсе</a></li>
+            <li><a href="modules/module1-intro/index.html"><i class="fas fa-book"></i> Разделы</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Контакты</a></li>
+        </ul>
     </div>
-        <section class="moduls">
-<h2>Вход в систему</h2>
-<form id="loginForm">
-    <label>Логин: <input type="text" id="username" required></label><br>
-    <label>Пароль: <input type="password" id="password" required></label><br>
-    <button type="submit">Войти</button>
-</form>
-<p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
-</section>
+</nav>
+
+<main>
+    <section class="login-container animate__animated animate__fadeInUp">
+        <div class="login-header">
+            <svg class="key-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M70,50 C70,30 50,30 50,50 C50,70 70,70 70,50 Z" fill="none" stroke="#e63946" stroke-width="4"/>
+                <path d="M50,50 L30,50 L20,60 L10,60 L10,40 L20,40 L30,50" fill="none" stroke="#e63946" stroke-width="4"/>
+                <circle cx="50" cy="50" r="10" fill="#e63946"/>
+                <circle cx="50" cy="50" r="5" fill="#ffffff"/>
+            </svg>
+            <h2>Авторизация</h2>
+            <p>Войдите в свой аккаунт для продолжения</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i> Логин:</label>
+                <input type="text" id="username" class="form-control" required placeholder="Введите ваш логин">
+            </div>
+            
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Пароль:</label>
+                <input type="password" id="password" class="form-control" required placeholder="Введите ваш пароль">
+            </div>
+            
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i> Войти
+            </button>
+        </form>
+        
+        <div class="register-link">
+            <p>Нет аккаунта? <a href="register.html"><i class="fas fa-user-plus"></i> Зарегистрироваться</a></p>
+        </div>
+    </section>
+</main>
+
+<footer class="animate__animated animate__fadeInUp">
+    <div class="container">
+        <div class="footer-content">
+            <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="errorMessage" class="error-message">
+    <i class="fas fa-exclamation-circle"></i>
+    <span>Неверный логин или пароль!</span>
+</div>
+
 <script>
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -53,21 +526,71 @@
         const user = users.find(u => u.username === username && u.password === password);
 
         if (user) {
+            // Анимация успешного входа
+            const form = document.getElementById('loginForm');
+            form.classList.add('animate__animated', 'animate__pulse');
+            
             localStorage.setItem('user', JSON.stringify(user));
-            if (user.role === 'teacher') {
-                window.location.href = 'teacher_dashboard.html';
-            } else {
-                window.location.href = 'student_dashboard.html';
-            }
+            
+            setTimeout(() => {
+                if (user.role === 'teacher') {
+                    window.location.href = 'teacher_dashboard.html';
+                } else {
+                    window.location.href = 'student_dashboard.html';
+                }
+            }, 1000);
         } else {
-            alert("Неверный логин или пароль.");
+            // Показываем сообщение об ошибке
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.classList.add('show');
+            
+            // Анимация ошибки
+            const form = document.getElementById('loginForm');
+            form.classList.add('animate__animated', 'animate__shakeX');
+            
+            setTimeout(() => {
+                form.classList.remove('animate__shakeX');
+            }, 1000);
+            
+            // Скрываем сообщение через 3 секунды
+            setTimeout(() => {
+                errorMessage.classList.remove('show');
+            }, 3000);
         }
+    });
+    
+    // Анимация элементов при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.animate__animated');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const animation = entry.target.classList.contains('animate__fadeIn') ? 
+                                      'animate__fadeIn' : 'animate__fadeInUp';
+                    entry.target.classList.add(animation);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Анимация при фокусе на полях формы
+        const formControls = document.querySelectorAll('.form-control');
+        formControls.forEach(control => {
+            control.addEventListener('focus', function() {
+                this.parentElement.classList.add('animate__animated', 'animate__pulse');
+                setTimeout(() => {
+                    this.parentElement.classList.remove('animate__pulse');
+                }, 1000);
+            });
+        });
     });
 </script>
 </body>
-<footer>
-    <div class="container">
-        <p>&copy; 2025 Интерактивный курс по робототехнике. Все права защищены.</p>
-    </div>
-</footer>
 </html>
